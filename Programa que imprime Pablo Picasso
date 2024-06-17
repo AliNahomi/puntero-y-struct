@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct direccion {
+    char calle_p[100];
+    int numero;
+    char ciudad[40];
+    char codigo_postal[6];
+};
+
+
+struct usuario {
+    char nombre[40];
+    char apellido[40];
+    struct direccion dir;
+    char fono[15];
+};
+
+int main() {
+    
+    struct usuario usua = {
+        "Pablo", "Picasso",
+        {"Italia", 69, "Milán", "6969"},
+        "57840-2344"
+    };
+
+    
+    printf("Usuario -> %s %s\n", usua.nombre, usua.apellido);
+    printf("Dirección -> Calle principal: %s, casa número: %d, en ciudad: %s, Cod. Postal: %s\n",
+           usua.dir.calle_p, usua.dir.numero, usua.dir.ciudad, usua.dir.codigo_postal);
+    printf("Teléfono -> %s\n", usua.fono);
+
+    return 0;
+}
