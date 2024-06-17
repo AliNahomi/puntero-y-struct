@@ -1,0 +1,47 @@
+ 
+
+#include <stdio.h> 
+
+#include <stdlib.h> 
+
+  
+
+int main() 
+
+{ 
+
+    int num =10; 
+
+    //declarar un puntero 
+
+    int *prt, **pprt; 
+
+    //valor de la variable al espacio de memoria; 
+
+    *prt = &num; 
+
+    // %p muestra la memoria que esta asignada 
+
+    printf("Los valores son %d - %p", num, &prt); 
+
+  
+
+    return 0; 
+
+//*almacena un espacio de memoria 
+
+// con& valor 
+
+//sin & dirección de valor 
+
+// & asgna espacios de memoria 
+
+ 
+
+} 
+
+  
+
+ 
+
+ 
