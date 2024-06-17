@@ -1,87 +1,49 @@
-#include <stdio.h> 
+#include <stdio.h>
 
-int main() 
+int main() {
+    int cant_estudiantes, i, j;
 
-{ 
+    printf("Ingrese la cantidad de estudiantes: ");
+    scanf("%d", &cant_estudiantes);
 
-    int cant_estudiantes, i, j; 
+    char nombre[cant_estudiantes][15];
+    float nota[cant_estudiantes][6];
+    float prom[cant_estudiantes];
+    float desviacion[cant_estudiantes];
 
-    float prom[cant_estudiantes]; 
+    for (i = 0; i < cant_estudiantes; i++) {
+        printf("Ingrese el nombre del estudiante %d: ", i + 1);
+        scanf("%s", nombre[i]);
 
-    float desviacion[cant_estudiantes]; 
+        float acu = 0;
+        for (j = 0; j < 6; j++) {
+            printf("Ingrese la nota %d del estudiante: ", j + 1);
+            scanf("%f", &nota[i][j]);
+            printf("NOTA %d: %.2f\n", j + 1, nota[i][j]);
+            acu += nota[i][j];
+        }
 
-    printf("Ingrese la cantidad de estudiantes: "); 
+        prom[i] = acu / 6;
+        printf("PROMEDIO %d: %.2f\n", i + 1, prom[i]);
 
-    scanf("%d", &cant_estudiantes); 
+        // Calcular la desviación estándar
+        float sumatoria_cuadrados = 0;
+        for (j = 0; j < 6; j++) {
+            sumatoria_cuadrados += (nota[i][j] - prom[i]) * (nota[i][j] - prom[i]);
+        }
+        desviacion[i] = sqrt(sumatoria_cuadrados / 6);
+        printf("DESVIACION %d: %.2f\n", i + 1, desviacion[i]);
+    }
 
-  
+    printf("NOMBRE\t\tCALIFICACIONES\t\tPROMEDIO\tDESVIACION\n");
+    for (i = 0; i < cant_estudiantes; i++) {
+        printf("%s\t\t", nombre[i]);
+        for (j = 0; j < 6; j++) {
+            printf("%.2f\t", nota[i][j]);
+        }
+        printf("%.2f\t\t%.2f\n", prom[i], desviacion[i]);
+    }
 
-    char nombre[cant_estudiantes][15]; 
+    return 0;
+}
 
-    float nota[cant_estudiantes][6]; 
-
-  
-
-    for (i = 0; i < cant_estudiantes; i++) 
-
-    { 
-
-        printf("Ingrese el nombre del estudiante %d: ", i + 1); 
-
-        scanf("%s", nombre[i]); 
-
-  
-
-        float acu = 0; 
-
-        for (j = 0; j < 6; j++) 
-
-        { 
-
-            printf("Ingrese la nota %d del estudiante: ", j + 1); 
-
-            scanf("%f", &nota[i][j]); 
-
-            printf("NOTA %d: %.2f\n", j + 1, nota[i][j]); 
-
-            acu += nota[i][j]; 
-
-        } 
-
-        prom[i] = acu / 6; 
-
-        printf("PROMEDIO %d: %.2f\n", i + 1, prom[i]); 
-
-        desviacion[i] = prom[i] / 6; 
-
-        printf("DESVIACION %d: %.2f\n", i + 1, desviacion[i]); 
-
-    } 
-
-    printf("NOMBRE\t\tCALIFICACIONE\t\t\t\t\tPROMEDIO\t\tDESVIACION\n"); 
-
-    for (i = 0; i < cant_estudiantes; i++) 
-
-    { 
-
-        printf("%s\t\t", nombre[i]); 
-
-for (j = 0; j < 6; j++) 
-
-        { 
-
-  
-
-            printf("%.2f\t", nota[i][j]); 
-
-        } 
-
-        printf("%.2f\t\t%.2f\n", prom[i], desviacion[i]); 
-
-    } 
-
-  
-
-    return 0; 
-
-} 
