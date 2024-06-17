@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct direccion {
+    char calle_p[100];
+    int numero;
+    char ciudad[40];
+    char cod_pos[7]; // Aumentado a 7 para incluir el carácter nulo
+};
+
+struct usuario {
+    char nombre[40];
+    char apellido[40];
+    struct direccion dir;
+    char fono[15];
+};
+
+int main() {
+    // Inicialización de la estructura de usuario
+    struct usuario usua = {
+        "Pablo",
+        "Piccaso",
+        { "Italia", 69, "Milano", "6969" },
+        "57840-2344"
+    };
+
+    // Impresión de los datos del usuario
+    printf("Usuario: %s %s\n", usua.nombre, usua.apellido);
+    printf("Direccion, calle principal: %s\nCasa número: %d\nCiudad: %s\nCod. postal: %s\n", 
+           usua.dir.calle_p, usua.dir.numero, usua.dir.ciudad, usua.dir.cod_pos);
+    printf("Telefono: %s\n", usua.fono);
+
+    return 0;
+}
